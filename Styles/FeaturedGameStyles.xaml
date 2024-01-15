@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- featured game title text style -->
+    <Style TargetType="TextBlock" x:Key="FeaturedGameTitleTextStyle">
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- featured game ad text border style -->
+    <Style TargetType="Border" x:Key="FeaturedGameAdTextBorderStyle">
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="CornerRadius" Value="4,4,4,4"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="Background" Value="#f4f4f5"/>
+        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
+        <Setter Property="RelativePanel.AlignBottomWithPanel" Value="True"/>
+    </Style>
+
+    <!-- featured game ad text style -->
+    <Style TargetType="TextBlock" x:Key="FeaturedGameAdTextStyle">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Foreground" Value="#636363"/>
+    </Style>
+
+    <!-- featured game app item grid style -->
+    <Style TargetType="Grid" x:Key="FeaturedGameAppItemGridStyle">
+        <Setter Property="Height" Value="230"/>
+        <Setter Property="Margin" Value="0,6,0,6"/>
+        <Setter Property="CornerRadius" Value="8,8,8,8"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#e4e4e7"/>
+    </Style>
+
+    <!-- featured game app vertical stack panel style -->
+    <Style TargetType="StackPanel" x:Key="FeaturedGameAppItemVerticalStackPanelStyle">
+        <Setter Property="Height" Value="82"/>
+        <Setter Property="Padding" Value="24,24,24,24"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+    </Style>
+
+    <!-- featured game app image border style -->
+    <Style TargetType="Image" x:Key="FeaturedGameAppItemImageStyle">
+        <Setter Property="Stretch" Value="UniformToFill"/>
+    </Style>
+
+    <!-- featured game app title style -->
+    <Style TargetType="TextBlock" x:Key="FeaturedGameAppItemTitleTextStyle">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="MaxLines" Value="1"/>
+        <Setter Property="TextTrimming" Value="WordEllipsis"/>
+        <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+    </Style>
+
+    <!-- featured game app category text style -->
+    <Style TargetType="TextBlock" x:Key="FeaturedGameAppItemCategoryTextStyle">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiLight"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#f0f0f0"/>
+    </Style>
+
+</ResourceDictionary>
+    

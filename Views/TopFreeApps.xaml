@@ -1,0 +1,148 @@
+﻿<UserControl
+    x:Name="TopFreeAppsView"
+    x:Class="MicrosoftStore.Views.TopFreeApps"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:MicrosoftStore.Views"
+    xmlns:models="using:MicrosoftStore.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="276"
+    d:DesignWidth="400"
+    SizeChanged="{x:Bind ViewSizeChanged}">
+
+    <UserControl.Resources>
+        <DataTemplate 
+            x:Name="TopFreeAppItemTemplate" 
+            x:DataType="models:AppItemDataObject">
+
+            <RelativePanel
+                x:Name="TopFreeAppItemRelativePanel"
+                Loaded="GridItem_Loaded"
+                Width="{Binding TopFreeAppsItemWidth, ElementName=TopFreeAppsView}"
+                Style="{StaticResource TopFreeAppItemRelativePanelStyle}">
+
+                <Canvas x:Name="ShadowContainer" />
+                
+                <Border
+                    x:Name="TopFreeAppItemImageBorder"
+                    Style="{StaticResource TopFreeAppItemImageBorderStyle}" 
+                    Background="{x:Bind ImageBackground}">
+
+                    <Image 
+                        Source="{x:Bind ImageLocation}" 
+                        Style="{StaticResource TopFreeAppItemImageStyle}"/>
+                </Border>
+
+                <StackPanel
+                    x:Name="TopFreeAppItemInfoVerticalStackPane"
+                    Style="{StaticResource TopFreeAppItemInfoVerticalStackPanelStyle}">
+
+                    <TextBlock 
+                        Text="{x:Bind Title}" 
+                        Style="{StaticResource TopFreeAppItemTitleTextStyle}"/>
+
+                    <StackPanel 
+                        Style="{StaticResource TopFreeAppItemInfoHorizontalStackPanelStyle}">
+
+                        <TextBlock 
+                            Text="{x:Bind AverageRating}"
+                            Style="{ThemeResource TopFreeAppItemRatingTextStyle}"/>
+
+                        <Image 
+                            Source="{x:Bind AverageRatingImageLocation}"
+                            Style="{StaticResource TopFreeAppItemRatingImageStyle}"/>
+
+                        <Line Style="{StaticResource TopFreeAppItemLineStyle}"/>
+
+                        <TextBlock
+                            Text="{x:Bind Category}"
+                            Style="{ThemeResource TopFreeAppItemCategoryTextStyle}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+
+                <Border 
+                    Style="{StaticResource TopFreeAppItemDisplayPrictTextBorderStyle}">
+
+                    <TextBlock
+                        Text="{x:Bind DisplayPrice}"
+                        Style="{ThemeResource TopFreeAppItemDisplayPrictTextStyle}"/>
+                </Border>
+            </RelativePanel>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="GridView_ItemsPanelTemplate_Min">
+            <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+
+        <ItemsPanelTemplate x:Key="GridView_ItemsPanelTemplate_Mid">
+            <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+
+        <ItemsPanelTemplate x:Key="GridView_ItemsPanelTemplate_Max">
+            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="MinRowsOrColumnsState">
+                    <VisualState.StateTriggers>
+                        <!-- 小型 | 高达 640px | 20 英寸到 65 英寸 | 电视	 | 320x569、360x640、480x854 -->
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TopFreeAppsGridView.ItemsPanel" Value="{StaticResource GridView_ItemsPanelTemplate_Min}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="MidRowsOrColumnsState">
+                    <VisualState.StateTriggers>
+                        <!-- 中 | 641 - 1007px | 7" 到 12" | 平板电脑 | 960x540 -->
+                        <AdaptiveTrigger MinWindowWidth="640" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TopFreeAppsGridView.ItemsPanel" Value="{StaticResource GridView_ItemsPanelTemplate_Mid}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="MaxRowsOrColumnsState">
+                    <VisualState.StateTriggers>
+                        <!-- 大 | 1008px 及最高 | 13" 及更大 | 电脑、笔记本电脑、Surface Hub | 1024x640、1366x768、1920x1080 -->
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TopFreeAppsGridView.ItemsPanel" Value="{StaticResource GridView_ItemsPanelTemplate_Max}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <StackPanel 
+            Style="{StaticResource TopFreeAppsTitleStackPanelStyle}">
+            
+            <TextBlock 
+                Text="{x:Bind DataModel.Title}"
+                Style="{StaticResource TopFreeAppsTitleTextStyle}"/>
+            
+            <Image 
+                Source="{x:Bind DataModel.ImageLocation}"
+                Style="{StaticResource TopFreeAppsChevronRightImageTextStyle}"/>
+            
+        </StackPanel>
+        <GridView 
+            x:Name="TopFreeAppsGridView"
+            ItemsSource="{x:Bind ItemsDataSource, Mode=OneWay}"
+            ItemsPanel="{StaticResource GridView_ItemsPanelTemplate_Max}"
+            ItemTemplate="{StaticResource TopFreeAppItemTemplate}">
+
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem" BasedOn="{StaticResource BorderlessGridViewItem}">
+                    <Setter Property="Margin" Value="6, 6, 6, 6"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+    </StackPanel>
+</UserControl>
