@@ -205,6 +205,7 @@
     <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="DataModel\MicrosoftStoreData.json" />
     <None Include="README.md" />
   </ItemGroup>
