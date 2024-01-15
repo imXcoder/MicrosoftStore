@@ -1,1 +1,0 @@
-D:\Microsoft\MicrosoftRepos\MicrosoftStore\MicrosoftStore.csproj;x64
