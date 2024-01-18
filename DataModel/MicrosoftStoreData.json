@@ -44,7 +44,7 @@
         "Category": "Productivity",
         "DisplayPrice": "Free",
         "ProductId": "9PKTQ5699M62",
-        "IconImageLocation": "Productivity",
+        "IconImageLocation": "/Assets/iCloud.png",
         "IconImageBackground": "#00000000"
       },
       {
@@ -71,7 +71,7 @@
       }
     ]
   },
-  "FeaturedGame": {
+  "FeaturedGameApp": {
     "Title": "Featured game",
     "Product": {
       "Title": "Fairyland: Merge and Magic",

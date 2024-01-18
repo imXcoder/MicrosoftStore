@@ -33,7 +33,7 @@ namespace MicrosoftStore.Views
 
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+            //FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 }

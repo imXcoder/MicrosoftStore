@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using MicrosoftStore.DataModel;
 using System.ComponentModel;
 using MicrosoftStore.Views;
+using MicrosoftStore.Models;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -28,12 +29,19 @@ namespace MicrosoftStore
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private MicrosoftStoreDataModel DataModel { get; set; }
+        private MicrosoftStoreDataObject DataSource = new MicrosoftStoreDataObject();
 
         public MainPage()
         {
             this.InitializeComponent();
-            this.DataModel = new MicrosoftStoreDataModel();
+            LoadMicrosoftStoreDataFile();
+        }
+
+        public async void LoadMicrosoftStoreDataFile()
+        {
+            DataSource = await MicrosoftStoreDataModel.LoadDataJsonAsync();
+
+            this.Bindings.Update();
         }
     }
 }

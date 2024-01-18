@@ -28,10 +28,10 @@
                 <Border
                     x:Name="TopFreeAppItemImageBorder"
                     Style="{StaticResource TopFreeAppItemImageBorderStyle}" 
-                    Background="{x:Bind ImageBackground}">
+                    Background="{x:Bind IconImageBackground}">
 
                     <Image 
-                        Source="{x:Bind ImageLocation}" 
+                        Source="{x:Bind IconImageLocation}" 
                         Style="{StaticResource TopFreeAppItemImageStyle}"/>
                 </Border>
 
@@ -124,11 +124,11 @@
             Style="{StaticResource TopFreeAppsTitleStackPanelStyle}">
             
             <TextBlock 
-                Text="{x:Bind DataModel.Title}"
+                Text="{x:Bind DataModel.Title, Mode=OneWay}"
                 Style="{StaticResource TopFreeAppsTitleTextStyle}"/>
             
             <Image 
-                Source="{x:Bind DataModel.ImageLocation}"
+                Source="{x:Bind DataModel.ChevronRightImageLocation, Mode=OneWay}"
                 Style="{StaticResource TopFreeAppsChevronRightImageTextStyle}"/>
             
         </StackPanel>

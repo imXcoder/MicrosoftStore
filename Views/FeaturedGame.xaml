@@ -29,7 +29,7 @@
         <StackPanel Orientation="Horizontal">
             
             <TextBlock  
-                Text="{x:Bind DataModel.Title}"
+                Text="{x:Bind DataModel.Title, Mode=OneWay}"
                 Style="{StaticResource FeaturedGameTitleTextStyle}"/>
 
             <Border 
@@ -51,7 +51,7 @@
                 Tapped="Image_Tapped"
                 FlyoutBase.AttachedFlyout="{StaticResource ImagePreviewFlyout}"
                 DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                Source="{x:Bind DataModel.Product.ImageLocation}" 
+                Source="{x:Bind DataModel.Product.IconImageLocation, Mode=OneWay}" 
                 Stretch="UniformToFill">
                 
             </Image>
@@ -69,10 +69,10 @@
                 </StackPanel.Background>
 
                 <TextBlock 
-                    Text="{x:Bind DataModel.Product.Title}"
+                    Text="{x:Bind DataModel.Product.Title, Mode=OneWay}"
                     Style="{ThemeResource FeaturedGameAppItemTitleTextStyle}"/>
                 <TextBlock 
-                    Text="{x:Bind DataModel.Product.Category}"
+                    Text="{x:Bind DataModel.Product.Category, Mode=OneWay}"
                     Style="{ThemeResource FeaturedGameAppItemCategoryTextStyle}"/>
             </StackPanel>
         </Grid>

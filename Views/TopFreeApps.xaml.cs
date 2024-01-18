@@ -35,10 +35,14 @@ namespace MicrosoftStore.Views
         {
             get { return (TopFreeAppsDataObject)GetValue(DataModelProperty); }
             set {
-                ItemsDataSource.Clear();
+                if (value != null)
+                {
+                    ItemsDataSource.Clear();
 
-                foreach (AppItemDataObject Item in value.ProductList) {
-                    ItemsDataSource.Add(Item);
+                    foreach (AppItemDataObject Item in value.ProductList)
+                    {
+                        ItemsDataSource.Add(Item);
+                    }
                 }
 
                 SetValue(DataModelProperty, value); 
@@ -93,6 +97,11 @@ namespace MicrosoftStore.Views
 
         private void UpdateGridViewItemsSource(ItemsWrapGrid WrapGrid)
         {
+            if (DataModel == null) 
+            { 
+                return; 
+            }
+
             int ItemsCount = ItemsDataSource.Count;
 
             if (TopFreeAppsGridView != null && WrapGrid != null)

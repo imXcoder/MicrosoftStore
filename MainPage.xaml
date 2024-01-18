@@ -54,9 +54,9 @@
         </Grid.ColumnDefinitions>
 
         <!-- top free apps stack panel -->
-        <views:TopFreeApps x:Name="TopFreeApps" Grid.Row="0" Grid.Column="0" DataModel="{x:Bind DataModel.TopFreeAppsData}" />
+        <views:TopFreeApps x:Name="TopFreeApps" Grid.Row="0" Grid.Column="0" DataModel="{x:Bind DataSource.TopFreeApps, Mode=OneWay}" />
 
         <!-- featured game stack panel -->
-        <views:FeaturedGame x:Name="FeaturedGame" Grid.Row="0" Grid.Column="1" DataModel="{x:Bind DataModel.FeaturedGameAppData}"/>
+        <views:FeaturedGame x:Name="FeaturedGame" Grid.Row="0" Grid.Column="1" DataModel="{x:Bind DataSource.FeaturedGameApp, Mode=OneWay}"/>
     </Grid>
 </Page>

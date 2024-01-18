@@ -15,7 +15,7 @@ namespace MicrosoftStore.Helpers
     {
         public static async Task<string> LoadText(string relativeFilePath)
         {
-            StorageFile file = null;
+            StorageFile file;
             if (NativeHelper.IsAppPackaged == false)
             {
                 var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
